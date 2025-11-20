@@ -2,3 +2,5 @@
 *.o
 *.d
 *.out
+ex00/megaphone
+ex01/phonebook
