@@ -24,8 +24,6 @@ public:
     std::string getNickname() const;
     std::string getPhoneNumber() const;
     std::string getDarkestSecret() const;
-
-    bool isEmpty() const;
 };
 
 #endif

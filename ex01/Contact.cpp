@@ -22,9 +22,3 @@ std::string Contact::getLastName() const { return lastName; }
 std::string Contact::getNickname() const { return nickname; }
 std::string Contact::getPhoneNumber() const { return phoneNumber; }
 std::string Contact::getDarkestSecret() const { return darkestSecret; }
-
-bool Contact::isEmpty() const
-{
-    return firstName.empty() && lastName.empty() && nickname.empty()
-           && phoneNumber.empty() && darkestSecret.empty();
-}
