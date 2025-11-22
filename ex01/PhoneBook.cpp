@@ -35,6 +35,31 @@ namespace {
 PhoneBook::PhoneBook()
     : count(0), nextIndex(0) {}
 
+PhoneBook::PhoneBook(const PhoneBook& other)
+    : count(other.count), nextIndex(other.nextIndex)
+{
+    for (int i = 0; i < MAX; ++i)
+    {
+        contacts[i] = other.contacts[i];
+    }
+}
+
+PhoneBook& PhoneBook::operator=(const PhoneBook& other)
+{
+    if (this != &other)
+    {
+        count = other.count;
+        nextIndex = other.nextIndex;
+        for (int i = 0; i < MAX; ++i)
+        {
+            contacts[i] = other.contacts[i];
+        }
+    }
+    return *this;
+}
+
+PhoneBook::~PhoneBook() {}
+
 void PhoneBook::addContactInteractively()
 {
     std::string first, last, nick, phone, secret;
