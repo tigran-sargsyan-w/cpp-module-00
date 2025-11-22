@@ -13,6 +13,10 @@ private:
 
 public:
     Contact();
+    Contact(const Contact& other);
+    Contact& operator=(const Contact& other);
+    ~Contact();
+    
     void setAll(const std::string& first,
                 const std::string& last,
                 const std::string& nick,

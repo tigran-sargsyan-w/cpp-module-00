@@ -12,6 +12,10 @@ private:
 
 public:
     PhoneBook();
+    PhoneBook(const PhoneBook& other);
+    PhoneBook& operator=(const PhoneBook& other);
+    ~PhoneBook();
+    
     void addContactInteractively();
     void displayContacts() const;
     void displayContactDetails(int index) const;
