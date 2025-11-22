@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <sstream>
 #include <cctype>
+#include <string>
 
 namespace {
     bool askNonEmpty(const std::string& prompt, std::string& out) {
