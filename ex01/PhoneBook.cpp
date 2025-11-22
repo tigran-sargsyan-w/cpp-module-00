@@ -6,8 +6,10 @@
 #include <string>
 
 namespace {
-    bool askNonEmpty(const std::string& prompt, std::string& out) {
-        while (true) {
+    bool askNonEmpty(const std::string& prompt, std::string& out)
+    {
+        while (true)
+        {
             std::cout << prompt;
             if (!std::getline(std::cin, out)) return false; // EOF
             if (!out.empty()) return true;
