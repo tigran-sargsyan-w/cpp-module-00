@@ -17,7 +17,6 @@ void Account::_displayTimestamp(void)
     now = std::localtime(&timestamp);
     std::strftime(buffer, sizeof(buffer), "[%Y%m%d_%H%M%S] ", now);
     std::cout << buffer;
-    // std::cout << "[19920104_091532] ";
 }
 
 int Account::getNbAccounts( void )
