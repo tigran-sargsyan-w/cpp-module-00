@@ -4,7 +4,6 @@
 #include <sstream>
 #include <cctype>
 
-// --- C++98 helper (instead of lambda) ---
 namespace {
     bool askNonEmpty(const std::string& prompt, std::string& out) {
         while (true) {
@@ -14,25 +13,24 @@ namespace {
             std::cout << "Field cannot be empty. Please try again.\n";
         }
     }
+
+    std::string formatField(const std::string& s)
+    {
+        if (s.length() <= 10)
+        {
+            std::ostringstream oss;
+            oss << std::setw(10) << s;
+            return oss.str();
+        }
+        // truncate and put a dot at the end
+        std::string res = s.substr(0, 9);
+        res.push_back('.');
+        return res;
+    }
 }
-// -------------------------------------
 
 PhoneBook::PhoneBook()
     : count(0), nextIndex(0) {}
-
-std::string PhoneBook::formatField(const std::string& s)
-{
-    if (s.length() <= 10)
-    {
-        std::ostringstream oss;
-        oss << std::setw(10) << s;
-        return oss.str();
-    }
-    // truncate and put a dot at the end
-    std::string res = s.substr(0, 9);
-    res.push_back('.');
-    return res;
-}
 
 void PhoneBook::addContactInteractively()
 {
