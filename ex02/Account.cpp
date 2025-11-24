@@ -7,6 +7,10 @@ int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
+/**
+ * Print the current timestamp to std::cout in format [YYYYMMDD_HHMMSS].
+ * No parameters; used internally before status messages.
+ */
 void Account::_displayTimestamp(void)
 {
     char    buffer[20];
@@ -19,26 +23,47 @@ void Account::_displayTimestamp(void)
     std::cout << buffer;
 }
 
+
+/**
+ * Return the total number of Account instances created.
+ * @return number of accounts.
+ */
 int Account::getNbAccounts( void )
 {
     return _nbAccounts;
 }
 
+/**
+ * Return the sum of all account balances.
+ * @return total amount across all accounts.
+ */
 int Account::getTotalAmount( void )
 {
     return _totalAmount;
 }
 
+/**
+ * Return the total number of deposits across all accounts.
+ * @return total deposits count.
+ */
 int Account::getNbDeposits( void )
 {
     return _totalNbDeposits;
 }
 
+/**
+ * Return the total number of withdrawals across all accounts.
+ * @return total withdrawals count.
+ */
 int Account::getNbWithdrawals( void )
 {
     return _totalNbWithdrawals;
 }
 
+/**
+ * Display global accounts summary (counts, total, deposits, withdrawals).
+ * Prints a timestamp and the aggregated information to std::cout.
+ */
 void Account::displayAccountsInfos( void )
 {
     _displayTimestamp();
@@ -49,6 +74,11 @@ void Account::displayAccountsInfos( void )
               << std::endl;
 }
 
+/**
+ * Constructor with initial deposit.
+ * @param initial_deposit Starting balance for the account.
+ * Initializes per-account counters and updates global totals.
+ */
 Account::Account( int initial_deposit )
 {
     this->_accountIndex = _nbAccounts;
@@ -65,6 +95,9 @@ Account::Account( int initial_deposit )
               << std::endl;
 }
 
+/**
+ * Destructor. Prints a timestamped closed message for this account.
+ */
 Account::~Account()
 {
     _displayTimestamp();
@@ -74,6 +107,11 @@ Account::~Account()
               << std::endl;
 }
 
+/**
+ * Make a deposit to this account.
+ * @param deposit Amount to add to the current balance.
+ * Updates per-account and global deposit counters and totals.
+ */
 void Account::makeDeposit( int deposit )
 {
     int p_amount = this->_amount;
@@ -92,6 +130,11 @@ void Account::makeDeposit( int deposit )
               << std::endl;
 }
 
+/**
+ * Attempt to withdraw from this account.
+ * @param withdrawal Amount to withdraw.
+ * @return true if withdrawal succeeded, false if refused due to insufficient funds.
+ */
 bool Account::makeWithdrawal( int withdrawal )
 {
     int p_amount = this->_amount;
@@ -120,11 +163,19 @@ bool Account::makeWithdrawal( int withdrawal )
     return true;
 }
 
+/**
+ * Return the current balance of this account.
+ * @return current amount.
+ */
 int Account::checkAmount( void ) const
 {
     return this->_amount;
 }
 
+/**
+ * Display this account's status (index, amount, deposits, withdrawals).
+ * Prints a timestamp and the per-account information to std::cout.
+ */
 void Account::displayStatus( void ) const
 {
     _displayTimestamp();
