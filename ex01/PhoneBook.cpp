@@ -6,6 +6,12 @@
 #include <string>
 
 namespace {
+    /**
+     * Prompt the user until a non-empty line is entered or EOF occurs.
+     * @param prompt Text to display when asking the user.
+     * @param out Reference to string where the entered value will be stored.
+     * @return true if a non-empty line was read, false on EOF.
+     */
     bool askNonEmpty(const std::string& prompt, std::string& out)
     {
         while (true)
@@ -17,6 +23,12 @@ namespace {
         }
     }
 
+    /**
+     * Format a string for table display, fitting it into 10 characters.
+     * If the input is longer than 10 chars it is truncated and ends with '.'.
+     * @param s Input string to format.
+     * @return Formatted string of width 10.
+     */
     std::string formatField(const std::string& s)
     {
         if (s.length() <= 10)
@@ -32,9 +44,18 @@ namespace {
     }
 }
 
+/**
+ * Default constructor.
+ * Initializes internal counters for stored contacts.
+ */
 PhoneBook::PhoneBook()
     : count(0), nextIndex(0) {}
 
+/**
+ * Copy constructor.
+ * Copies contacts array and counter values from another PhoneBook.
+ * @param other PhoneBook to copy from.
+ */
 PhoneBook::PhoneBook(const PhoneBook& other)
     : count(other.count), nextIndex(other.nextIndex)
 {
@@ -44,6 +65,12 @@ PhoneBook::PhoneBook(const PhoneBook& other)
     }
 }
 
+/**
+ * Copy assignment operator.
+ * Copies contacts and counters from another PhoneBook.
+ * @param other PhoneBook to assign from.
+ * @return reference to this PhoneBook.
+ */
 PhoneBook& PhoneBook::operator=(const PhoneBook& other)
 {
     if (this != &other)
@@ -58,8 +85,15 @@ PhoneBook& PhoneBook::operator=(const PhoneBook& other)
     return *this;
 }
 
+/**
+ * Destructor. No dynamic resources to free.
+ */
 PhoneBook::~PhoneBook() {}
 
+/**
+ * Prompt the user for contact fields and add the new contact.
+ * Stops early if EOF is reached while reading input.
+ */
 void PhoneBook::addContactInteractively()
 {
     std::string first, last, nick, phone, secret;
@@ -76,6 +110,10 @@ void PhoneBook::addContactInteractively()
     std::cout << "Added contact.\n";
 }
 
+/**
+ * Display a table of stored contacts with truncated fields.
+ * @param index Zero-based index of the desired contact.
+ */
 void PhoneBook::displayContacts() const
 {
     std::cout << std::setw(10) << "Index" << "|"
@@ -91,6 +129,10 @@ void PhoneBook::displayContacts() const
     }
 }
 
+/**
+ * Print full stored details for the contact at `index`.
+ * @param index Zero-based index of the desired contact.
+ */
 void PhoneBook::displayContactDetails(int index) const
 {
     if (index < 0 || index >= count)
@@ -106,4 +148,8 @@ void PhoneBook::displayContactDetails(int index) const
     std::cout << "Darkest secret: " << c.getDarkestSecret() << "\n";
 }
 
+/**
+ * Return the current number of stored contacts.
+ * @return contact count (0..MAX).
+ */
 int PhoneBook::getCount() const { return count; }
