@@ -1,7 +1,10 @@
 # C++ Module 00 – Basics & First Classes 💡🧱
 
-✅ **Status**: Completed – all mandatory exercises
+✅ **Status**: Completed – all exercises
+
 🏫 **School**: 42 – C++ Modules (Module 00)
+
+🏅 Score: 100/100
 
 > *Namespaces, classes, member functions, stdio streams, initialization lists, `static`, `const` and some other basic stuff.*
 
